@@ -1,0 +1,42 @@
+@import url('https://fonts.googleapis.com/css2?family=Kanit&display=swap');
+
+.head-text{
+    margin-top: 6rem;
+    font-family: 'Kanit', sans-serif;
+    width: 50%;
+    text-align: center;
+    margin-left: 15rem;
+   /*  background-color: #E8D5B5; */
+    border-radius: 10px 0 10px 0;
+}
+
+.gridi{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-gap: 2fr;
+    margin-left: 2rem;
+    padding: 2rem;
+}
+
+@media only screen and (max-width: 800px){
+
+    .gridi{
+        
+        display: flex;
+        margin-left: 0rem;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        
+    }
+
+    .grid-card{
+        margin-right: 2rem;
+    }
+    .head-text{
+        margin-top: 6rem;
+         width: 60%;
+        margin-left: 5rem;
+      
+    }
+}

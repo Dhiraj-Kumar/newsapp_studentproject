@@ -1,0 +1,196 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Authentication API",
+        "description": "Authentication API developed in ExpressJS",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "host": "localhost:8000",
+    "basePath": "/api/v1",
+    "paths": {
+        "/register": {
+            "post": {
+                "x-swagger-router-controller": "UserController",
+                "tags": [
+                    "Register new user"
+                ],
+                "description": "add user to user's database",
+                "parameters": [
+                    {
+                        "name": "User's details",
+                        "in": "body",
+                        "description": "Enter firstname,lastname,email,answer of security question and password as per UserModel",
+                        "type": "string"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+
+        "/login": {
+            "post": {
+                "x-swagger-router-controller": "UserController",
+                "tags": [
+                    "User Login"
+                ],
+                "description": "user will be logged in if credentials are correct",
+                "parameters": [
+                    {
+                        "name": "credentials",
+                        "in": "body",
+                        "description": "Enter email,password ",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/isAuthenticated": {
+            "post": {
+                "x-swagger-router-controller": "UserController",
+                "tags": [
+                    "User Authentication"
+                ],
+                "description": "to check user is logged in or logout",
+                "parameters": [
+                    {
+                        "name": "token",
+                        "in": "body",
+                        "description": "enter the token as{'headers':'jwt={token}'}",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/changePassword/{username}": {
+            "post": {
+                "x-swagger-router-controller": "UserController",
+                "tags": [
+                    "Change Password"
+                ],
+                "description": "to change user password",
+                "parameters": [
+                    {
+                        "name": "old & new passwords",
+                        "in": "body",
+                        "description": "enter old and new passwords ",
+                        "type": "string"
+                    },
+                    {
+                        "name":"username",
+                        "in":"path",
+                        "description":"enter username",
+                        "type":"String"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/verifyUser": {
+            "post": {
+                "x-swagger-router-controller": "UserController",
+                "tags": [
+                    "Verify User"
+                ],
+                "description": "to verify a particular user by entering email and security answer",
+                "parameters": [
+                    {
+                        "name": "email and security answer",
+                        "in": "body",
+                        "description": "enter email and security answer to verify User",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/forgotPassword/{username}": {
+            "post": {
+                "x-swagger-router-controller": "UserController",
+                "tags": [
+                    "Forgot Password"
+                ],
+                "description": "to reset the password if user forgot the password",
+                "parameters": [
+                    {
+                        "name": "password",
+                        "in": "body",
+                        "description": "enter new password",
+                        "type": "string"
+                    },
+                    {
+                        "name":"username",
+                        "in":"path",
+                        "description":"enter username",
+                        "type":"String"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+        
+        
+    },
+    "definitions": {
+        "UserModel": {
+            "required": [
+                "firstname",
+                "lastname",
+                "email",
+                "ans1",
+                "password"
+            ],
+            "properties": {
+                "firstname": {
+                    "type": "String"
+                    
+                },
+               "lastname": {
+                    "type": "String"
+                },
+            
+                "email": {
+                    "type": "String"
+                    
+                },
+                "ans1":{
+                    "type":"String"
+                },
+                "password": {
+                    "type": "String"
+                   
+                }
+            }
+        }
+
+    }
+}

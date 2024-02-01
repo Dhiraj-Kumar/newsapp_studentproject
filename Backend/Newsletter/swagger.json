@@ -1,0 +1,37 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"News Api Documentation",
+        "description":"Endpoints for getting News ans Weather",
+        "version":"1.0"
+    },
+    "produces": [
+        "aplication/json"
+    ],
+    "host":"localhost:8005",
+    "basePath":"",
+    "paths":{
+        "/{email}":{
+            "post":{
+                "x-swagger-router-controller":"emailController",
+                "tags":[
+                    "Add Email for NewsLetter Subscription"
+                ],
+                "description":"To add Email to NewsLetter Subscription in MailChimp List",
+                "parameters":[{
+                    "name":"email",
+                        "in":"path",
+                        "required":true,
+                        "description":"Email that want to get added to Newsletter Subscription",
+                        "type":"string"
+                }],
+                "responses":{
+                    "200":{
+                        "description":"added"
+                    }
+                }
+
+            }
+        }
+    }
+}

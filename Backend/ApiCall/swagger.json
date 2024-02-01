@@ -1,0 +1,157 @@
+{
+    "swagger":"2.0",
+    "info":{
+        "title":"News Api Documentation",
+        "description":"Endpoints for getting News ans Weather",
+        "version":"1.0"
+    },
+    "produces": [
+        "aplication/json"
+    ],
+    "host":"localhost:8001",
+    "basePath":"",
+    "paths":{
+        "/bbc":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get BBC News"
+                ],
+                "description":"All news with BBC tag will be provided",
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        },
+        "/top-headlines-page1/":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get TopHeadlines News Page-1"
+                ],
+                "description":"All TopHeadlines news will be provided",
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        },
+        "/top-headlines-page2/":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get TopHeadlines News Page-2"
+                ],
+                "description":"All TopHeadlines news will be provided",
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        },
+        "/top-headlines-page3/":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get TopHeadlines News Page-3"
+                ],
+                "description":"All TopHeadlines news will be provided",
+                "parameters":[],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        },
+        "/search/{userQuery}":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get News According To Query"
+                ],
+                "description":"Return news with searched query",
+                "parameters":[
+                    {
+                        "name":"userQuery",
+                        "in":"path",
+                        "required":true,
+                        "description":"parameter on which user want to search",
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        },
+        "/category/{categoryName}":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get News By Category "
+                ],
+                "description":"Return news of specified category like: sports,bussiness",
+                "parameters":[
+                    {
+                        "name":"categoryName",
+                        "in":"path",
+                        "required":true,
+                        "description":" Category name",
+                        "type":"string"
+                    }
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        },
+        "/weather/{lat}/{lon}":{
+            "get":{
+                "x-swagger-router-controller":"apiController",
+                "tags":[
+                    "Get weather information "
+                ],
+                "description":"return weather information",
+                "parameters":[
+                    
+                        {"name":"lat",
+                        "in":"path",
+                        "required":true,
+                        "description":"lattitude of user area",
+                        "type":"string"},
+                        {"name":"lon",
+                        "in":"path",
+                        "required":true,
+                        "description":"longitude of user area",
+                        "type":"string"}
+                        
+                    
+                ],
+                "responses":{
+                    "200":{
+                        "description":"Ok"
+                    }
+                }
+
+            }
+        }
+    }
+}

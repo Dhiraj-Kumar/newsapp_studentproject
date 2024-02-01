@@ -1,0 +1,44 @@
+version: '3.5'
+services:
+  db:
+    image: mongo
+    ports:
+      - 27000:27017
+  
+  newsapp-api:
+    image: akshayar5/newsapp-api
+    ports:
+      - 8001:8001    
+  
+  newsapp-auth:
+    image: akshayar5/newsapp-auth
+    ports:
+      - 8000:8000
+    environment:
+      MONGODB_SERVER: "mongodb://db:27017/UsersDB"
+
+  newsapp-favorites:
+    image: akshayar5/newsapp-favorites
+    ports:
+      - 8004:8004
+    environment:
+      MONGODB_SERVER: "mongodb://db:27017/UsersDB"
+
+  newsapp-newsletter:
+    image: akshayar5/newsapp-newsletter
+    ports:
+      - 8005:8005
+
+  newsapp-refer:
+    image: akshayar5/newsapp-refer
+    ports:
+      - 8002:8002
+    environment:
+      MONGODB_SERVER: "mongodb://db:27017/RefersDB"
+
+  newsapp-ui:
+    image: akshayar5/newsapp-ui
+    ports:
+      - 3000:80
+
+

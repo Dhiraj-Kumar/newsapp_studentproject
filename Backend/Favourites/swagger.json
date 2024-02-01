@@ -1,0 +1,141 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Favourite API",
+        "description": "Favourite API developed in ExpressJS",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "host": "localhost:8004",
+    "basePath": "/",
+    "paths": {
+        "/getfavorite/{username}": {
+            "get": {
+                "x-swagger-router-controller": "favouriteController",
+                "tags": [
+                    "Get all Favourite Articles"
+                ],
+                "description": "Get all Favourite Articles of Particular user",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "Enter username",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/getparticularfav/{username}/{id}": {
+            "get": {
+                "x-swagger-router-controller": "favouriteController",
+                "tags": [
+                    "Get a particular article"
+                ],
+                "description": "Get a particular article added by particular user by entering publishedAt as id",
+                "parameters": [
+                    {
+                        "name": "username",
+                        "in": "path",
+                        "description": "Enter username",
+                        "type": "string"
+                    },
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter publishedAt as id",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/deletefavorite/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "favouriteController",
+                "tags": [
+                    "Delete Favourite Article"
+                ],
+                "description": "Delete Article from Database by entering publishedAt as id",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter id of article which is to be deleted",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/addfavorite": {
+            "post": {
+                "x-swagger-router-controller": "favouriteController",
+                "tags": [
+                    "Add Article to Favourite"
+                ],
+                "description": "Add Article to database by entering details",
+                "parameters": [
+                    {
+                        "name": "Article details",
+                        "in": "body",
+                        "description": "Enter title,description,url,urlToImage,publishedAt,username as per favouriteModel",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "favouriteModel": {
+            "required": [
+                "title",
+                "description",
+                "url",
+                "publishedAt",
+                "username"
+            ],
+            "properties": {
+               
+                "title": {
+                    "type": "String"
+                },
+                "description": {
+                    "type": "String"
+                },
+                "url": {
+                    "type": "String"
+                },
+                "urlToImage": {
+                    "type": "String"
+                },
+                "publishedAt": {
+                    "type": "String"
+                },
+                "username": {
+                    "type": "String"
+                }
+            }
+        }
+    }
+}

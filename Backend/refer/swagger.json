@@ -1,0 +1,134 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "Refer API",
+        "description": "Refer API developed in ExpressJS",
+        "version": "1.0"
+    },
+    "produces": [
+        "application/json"
+    ],
+    "host": "localhost:8002",
+    "basePath": "/api/v3",
+    "paths": {
+        "/addReferedArticle": {
+            "post": {
+                "x-swagger-router-controller": "ReferController",
+                "tags": [
+                    "Add Refered Article"
+                ],
+                "description": "Add Article to database",
+                "parameters": [
+                    {
+                        "name": "Article details",
+                        "in": "body",
+                        "description": "Enter author,title,description,url,urlToImage,publishedAt as per ReferModel",
+                        "type": "string"
+                    }
+                    
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+
+        "/getReferedArticle": {
+            "get": {
+                "x-swagger-router-controller": "ReferController",
+                "tags": [
+                    "Get Refered Article"
+                ],
+                "description": "Get Article from Database",
+                "parameters": [],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/deleteReferedArticle/{id}": {
+            "delete": {
+                "x-swagger-router-controller": "ReferController",
+                "tags": [
+                    "Delete Refered Article"
+                ],
+                "description": "Delete Article from Database",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter id of article which is to be deleted",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        },
+        "/getparticularArticle/{id}": {
+            "get": {
+                "x-swagger-router-controller": "ReferController",
+                "tags": [
+                    "Get particular article by entering 'publishedAt' as id"
+                ],
+                "description": "Get particular Article from Database",
+                "parameters": [
+                    {
+                        "name": "id",
+                        "in": "path",
+                        "description": "Enter Article id ",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK"
+                    }
+                }
+            }
+        }
+        
+        
+    },
+    "definitions": {
+        "ReferModel": {
+            "required": [
+                "title",
+                "url",
+                "publishedAt"
+            ],
+            "properties": {
+                "author": {
+                    "type": "String"
+                    
+                },
+               "title": {
+                    "type": "String"
+                },
+            
+                "description": {
+                    "type": "String"
+                    
+                },
+                "url":{
+                    "type":"String"
+                },
+                "urlToImage": {
+                    "type": "String"
+                   
+                },
+                "publishedAt":{
+                    "type":"String"
+                }
+            }
+        }
+
+    }
+}
